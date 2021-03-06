@@ -9,5 +9,5 @@ Run the interpreter in that format:
 ```bash
 ~ ./Main HelloWorld.bf
 ```
-Where *"HelloWorld.bf"* is the file you want interpret.
+Where *"HelloWorld.bf"* is the file you want to interpret.
 
