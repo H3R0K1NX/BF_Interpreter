@@ -6,7 +6,7 @@
 #define MEMORY_SIZE 30000
 #define U8 unsigned char
 
-class Compiler {
+class Interpreter {
 private:
 	U8* memoryBlock = new U8[MEMORY_SIZE]{ 0 };
 	U8* memoryPtr = &memoryBlock[0];
@@ -101,11 +101,11 @@ char* readFromFile(const char* FileName)
 	file.seekg(0); //Rewinds the file's crusor position.
 	while (std::getline(file, line))
 		totalCode += line;
-	std::cout << "Code to compile: " << totalCode << std::endl;
+	std::cout << "Code to interpret: " << totalCode << std::endl;
 	file.close(); //Closes the file
-	char* toCompile = new char[length];
-	strcpy(toCompile, totalCode.c_str());
-	return toCompile;
+	char* toInterpret = new char[length];
+	strcpy(toInterpret, totalCode.c_str());
+	return toInterpret;
 }
 
 int main(int argc, char** argv)
@@ -117,9 +117,9 @@ int main(int argc, char** argv)
 		std::cout << "Format: bf.exe filename.bf" << std::endl;
 		return -1;
 	}
-	Compiler compiler; //Creates an instance of the compiler
-	char* toCompile = readFromFile(argv[1]);
+	Interpreter interpreter; //Creates an instance of the interpreter
+	char* toInterpret = readFromFile(argv[1]);
 	std::cout << "The output is: " << std::endl << std::endl;
-	compiler.readStream(toCompile);
+	interpreter.readStream(toInterpret);
 	return 0;
 }
